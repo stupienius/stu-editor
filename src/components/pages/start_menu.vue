@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import store from "../../store";
 
 const filePath = ref("");
 const fileInput = ref(null);
@@ -17,10 +18,14 @@ const handleFileChange = (event) => {
     filePath.value = files[0].path || "select a file to start";
   }
 };
+
+store.commit("increment");
+console.log(store.state.count);
+store.commit("increment");
 </script>
 
 <template>
-  <div>
+  <div class="start_menu">
     <button @click="selectFile">Select File</button>
     <input
       type="file"
